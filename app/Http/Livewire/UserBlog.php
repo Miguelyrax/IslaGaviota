@@ -13,7 +13,7 @@ class UserBlog extends Component
 {
     use WithFileUploads;
     use WithPagination; 
-    public $subtitle,$category, $name,$urll, $blog_id,$otro,$category_id, $description,$idReserva, $images = [];
+    public $subtitle,$category, $name,$urll, $blog_id,$otro,$category_id, $description,$idReserva, $images;
     public $updateMode = false;
 
     
@@ -47,33 +47,8 @@ class UserBlog extends Component
         $this->description ='';
         $this->category_id = '';
         $this->urll = '';
+        $this->images = '';
         
-        
-    }
-    public function save()
-    {
-        
-        Image::where('imageable_id', $this->blog_id)
-            ->where('imageable_type', 'App\Models\Blog')
-            ->delete();
-        
-
-        foreach ($this->images as $image) {
-            $destination_path = 'blogs';
-            
-          $nombre =  time()."_".$image->getClientOriginalName();
-         $path = $image->storeAs($destination_path, $nombre);
-         
-            
-            Image::create([
-                'url'=>'blogs/'.$nombre,
-                'imageable_id' => $this->blog_id,
-                'imageable_type' => 'App\Models\Blog'
-
-            ]);
-        }
-        
-
         
     }
 
@@ -90,7 +65,7 @@ class UserBlog extends Component
           if(count($comprobar)>=1){
             session()->flash('error', 'Titulo del blog ya existe.');
           } else{
-            Blog::create([
+         $este = Blog::create([
                 'title' =>$this->name,
                 'subtitle'=>$this->subtitle,
                 'description'=>$this->description,
@@ -100,6 +75,22 @@ class UserBlog extends Component
                 'category_id'=>$this->category_id,
                 
             ]);
+            if(isset($this->images) && $this->images!=''){
+                if($este){
+                    $destination_path = 'blogs';
+            
+                $nombre =  $este->id . rand();
+               $path = $this->images->storeAs($destination_path, $nombre);
+               Image::create([
+                'url'=>'blogs/'.$nombre,
+                'imageable_id' => $este->id,
+                'imageable_type' => 'App\Models\Blog'     
+
+            ]);
+                }
+                
+               }
+           
     
             session()->flash('message', 'Blog creado creada.');
     
@@ -162,6 +153,25 @@ class UserBlog extends Component
                 'category_id'=>$this->category_id,
                
             ]);
+            if(isset($this->images) && $this->images!=''){
+                if($blog->image){
+                    Image::where('imageable_id', $this->blog_id)
+                    ->where('imageable_type', 'App\Models\Blog')
+                    ->delete(); 
+                }
+                $destination_path = 'blogs';
+            
+                $nombre =  $this->blog_id . rand();
+               $path = $this->images->storeAs($destination_path, $nombre);
+               Image::create([
+                'url'=>'blogs/'.$nombre,
+                'imageable_id' => $this->blog_id,
+                'imageable_type' => 'App\Models\Blog'     
+
+            ]);
+               }
+            
+    
             $this->updateMode = false;
             session()->flash('message', 'Especie modificada.');
             $this->resetInputFields();

@@ -47,7 +47,12 @@
                         </select>
                         @error('habitat_id') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
-                   
+
+                    <div class="form-group">
+                        
+                        <input id="control" type="file" wire:model="images">
+                       
+                    </div>
                    
                 
                  
@@ -57,7 +62,7 @@
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class=" bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
+                <button id="btn" type="button" class=" bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
                 <button type="button" wire:click.prevent="store()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700 close-modal">Guardar</button>
             </div>
         </form>
@@ -117,14 +122,13 @@
                     
                    
                     </div>
-                <form wire:submit.prevent="save">
+               
                 <div class="form-group">
                     
-                        <input type="file" wire:model="images" multiple>
+                        <input id="control2" type="file" wire:model="images" >
                        
                 </div>
-                <button wire:click.prevent="save()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Actualizar</button>
-                </form>
+                
                 
                
          
@@ -135,45 +139,14 @@
             
         </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
-                <button type="button" wire:click.prevent="update()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Guardar cambios</button>
+                <button id="btn2" type="button" wire:click.prevent="cancel()" class="bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
+                <button id="btn3" type="button" wire:click.prevent="update()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Guardar cambios</button>
             </div>
         </form>
        </div>
     </div>
 </div>
 
-<div wire:ignore.self class="modal fade" id="updateImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-       <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form wire:submit.prevent="save">
-
-                    <input type="file" wire:model="images" multiple>
-                  
-              
-               
-                   
-             
-                
-                
-                
-            
-        </div>
-            <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
-                <button type="submit" wire:click.prevent="save()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Guardar cambios</button>
-            </div>
-        </form>
-       </div>
-    </div>
-</div>
 
 <div wire:ignore.self class="modal fade" id="feature" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -47,15 +47,13 @@
                         
                        
                         </div>
-                    <form wire:submit.prevent="save">
+                    
                     <div class="form-group">
                         
-                            <input type="file" wire:model="images" multiple>
+                            <input id="control" type="file" wire:model="images" >
                            
                     </div>
-                    <button type="submit" wire:click.prevent="save()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Actualizar</button>
-                    </form>
-                
+                    
                
          
             
@@ -65,8 +63,8 @@
             
         </div>
             <div class="modal-footer">
-                <button type="button" wire:click.prevent="cancel()" class="bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
-                <button type="button" wire:click.prevent="update()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Guardar cambios</button>
+                <button id="btn" type="button" wire:click.prevent="cancel()" class="bg-cool-gray-500 text-white font-bold px-4 py-2 rounded mb-2 hover:bg-gray-700 close-btn" data-dismiss="modal">Cerrar</button>
+                <button id="btn2" type="button" wire:click.prevent="update()" class="bg-primary text-white font-bold px-4 py-2 rounded   mb-2 hover:bg-blue-700" data-dismiss="modal">Guardar cambios</button>
             </div>
         </form>
        </div>

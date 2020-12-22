@@ -18,7 +18,7 @@ class SpecieAdmin extends Component
 {
     use WithFileUploads;
     use WithPagination; 
-    public $specie, $name, $specie_id, $kind_id,$urll, $habitat_id,$otro, $description, $kind_name,$idReserva,$feature_id, $habitat_name, $images = [];
+    public $specie, $name, $specie_id, $kind_id,$urll, $habitat_id,$otro, $description, $kind_name,$idReserva,$feature_id, $habitat_name, $images;
     public $updateMode = false;
 
     
@@ -58,39 +58,12 @@ class SpecieAdmin extends Component
         $this->idReserva ='';
         $this->feature_id = '';
         $this->habitat_name = '';
-        
+        $this->images='';
         $this->urll = '';
         
         
     }
-    public function save()
-    {
-        
-            Image::where('imageable_id', $this->specie_id)
-            ->where('imageable_type', 'App\Models\Specie')
-            ->delete();
-        
-            
-                foreach ($this->images as $image) {
-                    $destination_path = 'species';
-                    
-                  $nombre =  time()."_".$image->getClientOriginalName();
-                 $path = $image->storeAs($destination_path, $nombre);
-                 
-                    
-                    Image::create([
-                        'url'=>'species/'.$nombre,
-                        'imageable_id' => $this->specie_id,
-                        'imageable_type' => 'App\Models\Specie'
-        
-                    ]);
-                }
-            
-        
-        
-
-        
-    }
+    
 
     public function store()
     {
@@ -105,7 +78,7 @@ class SpecieAdmin extends Component
           if(count($comprobar)>=1){
             session()->flash('error', 'Especie ya existe.');
           } else{
-            Specie::create([
+           $este = Specie::create([
                 'name' =>$this->name,
                 'description'=>$this->description,
                 'status'=>2,
@@ -114,6 +87,21 @@ class SpecieAdmin extends Component
                 'kind_id'=>$this->kind_id,
                 'habitat_id'=>$this->habitat_id,
             ]);
+            if(isset($this->images) && $this->images!=''){
+                if($este){
+                    $destination_path = 'species';
+            
+                $nombre =  $este->id . rand();
+               $path = $this->images->storeAs($destination_path, $nombre);
+               Image::create([
+                'url'=>'species/'.$nombre,
+                'imageable_id' => $este->id,
+                'imageable_type' => 'App\Models\Specie'     
+
+            ]);
+                }
+                
+               }
     
             session()->flash('message', 'Especie creada.');
     
@@ -203,6 +191,23 @@ class SpecieAdmin extends Component
                 
                
             ]);
+            if(isset($this->images) && $this->images!=''){
+                if($specie->image){
+                    Image::where('imageable_id', $this->specie_id)
+                    ->where('imageable_type', 'App\Models\Specie')
+                    ->delete(); 
+                }
+                $destination_path = 'species';
+            
+                $nombre =  $this->specie_id . rand();
+               $path = $this->images->storeAs($destination_path, $nombre);
+               Image::create([
+                'url'=>'species/'.$nombre,
+                'imageable_id' => $this->specie_id,
+                'imageable_type' => 'App\Models\Specie'     
+
+            ]);
+               }
             
             
     
