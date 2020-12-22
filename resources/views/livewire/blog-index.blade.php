@@ -34,7 +34,7 @@
         <div class="order-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:col-span-2 lg:order-1 gap-6">
             @foreach ($blogs as $blog)
                 <article class="bg-white shadow-lg rounded overflow-hidden">
-                    <img class="h-36 w-full object-cover" src="{{Storage::url($blog->image->url)}}" alt="">
+                    <img class="h-36 w-full object-cover" src="{{asset('storage/'.$blog->image->url)}}" alt="">
                     <div class="px-6 py-4">
                         <h1 class="text-xl text-gray-700 mb-2 leading-6">{{Str::limit($blog->title, 40)}}</h1>
                     <p class="text-gray-500 text-sm mb-2">Creador: {{$blog->creator->name}}</p>
@@ -80,7 +80,7 @@
             <aside class="hidden lg:block">
                 @foreach ($recientes as $reciente)
                     <article class="flex mb-6">
-                    <img class="h-32 w-40 object-cover" src="{{Storage::url($reciente->image->url)}}" alt="">
+                    <img class="h-32 w-40 object-cover" src="{{asset('storage/'.$reciente->image->url)}}" alt="">
                         <div class="ml-3">
                             <h1>
                             <a class="font bold text-gray-500 mb-3" href="{{route('blogs.show', $reciente)}}">{{Str::limit($reciente->title, 40)}}</a>

@@ -8,7 +8,7 @@
     
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure class="">
-                <img class=" border-solid border-8 border-gray-100  w-full h-60 object-cover" src="{{Storage::url($specie->image->url)}}" alt="">
+                <img class=" border-solid border-8 border-gray-100  w-full h-60 object-cover" src="{{asset('storage/'.$specie->image->url)}}" alt="">
     
             </figure>
             <div class="text-white">
@@ -27,7 +27,7 @@
             <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
                 <div class="px-6 py-4">
                     <h1 class="font-bold text-2xl mb-2">Blog</h1>
-                    <img class="w-full h-100 object-cover" src="{{Storage::url($specie->image->url)}}" alt="">
+                    <img class="w-full h-100 object-cover" src="{{asset('storage/'.$specie->image->url)}}" alt="">
                 </div>
 
             </section>
@@ -64,7 +64,7 @@
             <aside class="hidden lg:block">
                 @foreach ($similares as $similar)
                     <article class="flex mb-6">
-                    <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->image->url)}}" alt="">
+                    <img class="h-32 w-40 object-cover" src="{{asset('storage/'.$similar->image->url)}}" alt="">
                         <div class="ml-3">
                             <h1>
                             <a class="font bold text-gray-500 mb-3" href="{{route('faunas.show', $similar)}}">{{Str::limit($similar->name, 40)}}</a>

@@ -34,7 +34,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-8 gap-x-6 gap-y-8">
         @foreach ($species as $specie)
             <article class="bg-white shadow-lg rounded overflow-hidden">
-                <img class="h-36 w-full object-cover" src="{{Storage::url($specie->image->url)}}" alt="">
+                <img class="h-36 w-full object-cover" src="{{asset('storage/'.$specie->image->url)}}" alt="">
                 <div class="px-6 py-4">
                     <h1 class="text-xl text-gray-700 mb-2 leading-6">{{Str::limit($specie->name, 40)}}</h1>
                 <p class="text-gray-500 text-sm mb-2">Agregado por : {{$specie->creador->name}}</p>

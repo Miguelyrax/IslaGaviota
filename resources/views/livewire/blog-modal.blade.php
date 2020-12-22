@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Imágen</label>
-                        <img src="{{Storage::url($urll)}}" alt="">
+                        <img src="{{asset('storage/'.$urll)}}" alt="">
                         
                         
                        
@@ -146,7 +146,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Imágen</label>
-                        <img src="{{Storage::url($urll)}}" alt="">
+                        <img src="{{asset('storage/'.$urll)}}" alt="">
                         
                         
                        

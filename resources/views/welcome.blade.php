@@ -26,7 +26,7 @@
         @foreach ($animales as $animal)
         <article>
             <figure>
-                <img class="rounded-xl h-36 w-full object-cover" src="{{Storage::url($animal->image->url)}}" alt="">
+                <img class="rounded-xl h-36 w-full object-cover" src="{{asset('storage/'.$animal->image->url)}}" alt="">
             </figure>
             <header class="mt-2">
             <a href="{{route('faunas.show', $animal)}}"><h1 class="text-center text-xl text-gray-700">{{$animal->name}}</h1></a>
@@ -59,7 +59,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-8 gap-x-6 gap-y-8">
         @foreach ($blogs as $blog)
         <article class="bg-white shadow-lg rounded overflow-hidden">
-            <img class="h-36 w-full object-cover" src="{{Storage::url($blog->image->url)}}" alt="">
+            <img class="h-36 w-full object-cover" src="{{asset('storage/'.$blog->image->url)}}" alt="">
             <div class="px-6 py-4">
                 <h1 class="text-xl text-gray-700 mb-2 leading-6">{{Str::limit($blog->title, 40)}}</h1>
             <p class="text-gray-500 text-sm mb-2">Creador: {{$blog->creator->name}}</p>
