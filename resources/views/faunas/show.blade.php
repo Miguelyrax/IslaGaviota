@@ -1,9 +1,9 @@
 <x-app-layout>
 
     @if ($specie->habitat->name == 'Terrestres')
-    <section class=" py-20 mb-12 bg-cover bg-center  " style="background-image: url({{asset('img/Ffauna/bg_terrestre.png')}}) ">
+    <section class=" py-20 mb-12 bg-cover bg-center  " style="background-image: url({{asset('img/Ffauna/bg_terrestres.png')}}) ">
     @else  
-    <section id="fondo" class=" py-20 mb-12 bg-cover bg-center " style="background-image: url({{asset('img/Ffauna/bg_acuatico.png')}})">
+    <section id="fondo" class=" py-20 mb-12 bg-cover bg-center " style="background-image: url({{asset('img/Ffauna/bg_acuaticos.png')}})">
     @endif
     
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6">

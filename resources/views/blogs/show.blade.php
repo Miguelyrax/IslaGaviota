@@ -1,14 +1,11 @@
 <x-app-layout>
 
-    <section class=" py-12 mb-12 bg-gray-700 ">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <figure>
-                <img class="w-full h-60 object-cover" src="{{asset('storage/'.$blog->image->url)}}" alt="">
-    
-            </figure>
-            <div class="text-white">
-            <h1 class="text-4xl">Nombre: {{$blog->title}}</h1>
-            
+    <section class="w-screen mb-7 h-96 bg-cover bg-center " style="background-image: url({{asset('storage/'.$blog->image->url)}})">
+        
+            <div class="bg-gray-900 bg-opacity-75 h-96">
+            <div class="text-white grid grid-cols-1 justify-center w-2/3 m-auto py-20 lg:py-32  ">
+            <h1 class=" text-5xl text-">Título: {{$blog->title}}</h1>
+           
             <p class="mb-2"> <i class="fas fa-animal">Tipo: {{$blog->category->name}}</i></p>
             </div>
         
@@ -17,9 +14,11 @@
     </section>
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
        <div class="order-2 lg:col-span-2 lg:order-1">
-            <section class="bg-white shadow-lg rounded overflow-hidden mb-12">
+            <section class="bg-white relative shadow-lg rounded overflow-hidden mb-12">
                 <div class="px-6 py-4">
-                    <h1 class="font-bold text-2xl mb-2">Blog</h1>
+                    <h1 class="font-bold text-2xl mt-6 mb-6">{{$blog->title}}</h1>
+                    <img class="w-full h-100 object-cover" src="{{asset('storage/'.$blog->image->url)}}" alt="">
+                    <h1 class="font-bold text-2xl mt-6 mb-6">Descripción</h1>
                 <p class="text-center">{{$blog->description}}</p>
                 </div>
 

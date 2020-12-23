@@ -45,7 +45,7 @@
                             
                             <p>
                                 <p class="text-sm text-gray-500 ml-auto">
-                                    <i class="fas fa-users"></i>
+                                    <i class="fas fa-eye"></i>
                                     ({{$blog->vistas_count}})
                                 </p>
                             </p>
